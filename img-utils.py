@@ -58,5 +58,5 @@ def walkDir(RootDir, storageFilePath):
 # just one line of filepath you want to index
 # example: C:\myphotos\
 dirpath = open("readpath", "r").read().strip("\n").strip()
-storageFilePath = dirpath + "dirTree.txt"
+storageFilePath = os.path.join(dirpath, "dirTree.txt")
 walkDir(dirpath, storageFilePath)

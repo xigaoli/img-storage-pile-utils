@@ -4,13 +4,14 @@ import json
 import random
 #
 #
-def showImg(filepath):
+def showImg(filepath, title):
     imgToShow = mpimg.imread(filepath) # 
     # imgToShow->np array
     #imgToShow.shape #
 
     plt.imshow(imgToShow) # load pic
     plt.axis('off') # turn off axis
+    plt.title(title)
     plt.show()
 
 
@@ -40,12 +41,13 @@ def showRandomPic(listfilepath):
     imgToShow = imglist[idx]
     path = imgToShow["path"]
     date = imgToShow["date"]
-    print("date:{} path:{}".format(date,path))
-    showImg(path)
+    title = "date:{} path:{}".format(date,path)
+    print(title)
+    showImg(path, title)
     return
 
 
 dirpath = open("readpath", "r").read().strip("\n").strip()
-storageFilePath = dirpath + "dirTree.txt"
+storageFilePath = os.path.join(dirpath, "dirTree.txt")
 #print(dirpath)
 showRandomPic(storageFilePath)
